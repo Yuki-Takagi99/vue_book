@@ -9,18 +9,10 @@ var app = new Vue({
         ]
     },
     methods: {
-        // 追加ボタンをクリックした時のハンドラ
-        doAdd: function () {
-            // リスト内で一番大きいIDを取得
-            var max = this.list.reduce(function(a,b) {
-                return a > b.id ? a : b.id
-            }, 0)
-            // 新しいモンスターをリストに追加
-            this.list.push({
-                id: max + 1,
-                name: this.name,
-                hp: 500
-            })
+        // 削除ボタンをクリックした時のハンドラ
+        doRemove: function (index) {
+            // 受け取ったインデックスの位置から1個要素を削除
+            this.list.splice(index, 1)
         }
     }
 })
