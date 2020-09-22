@@ -1,13 +1,29 @@
 new Vue({
     el: '#app',
     data: {
-        width: 800,
+        // フォームの入力と紐づけるデータ
+        budget: 300,
+        // 表示件数
+        limit: 2,
+        // もとになるリスト
+        list: [
+            { id: 1, name: 'りんご', price: 100 },
+            { id: 2, name: 'ばなな', price: 200 },
+            { id: 3, name: 'いちご', price: 400 },
+            { id: 4, name: 'オレンジ', price: 300 },
+            { id: 5, name: 'メロン', price: 500 },
+        ]
     },
     computed: {
-        halfWidth: {
-            get: function () { return this.width / 2 },
-            // halfWidthの2倍の数値をwidthに代入する
-            set: function (val) { this.width = val * 2 },
+        // budget以下のリストを返す算出プロパティ
+        matched: function () {
+            return this.list.filter(function (el) {
+                return el.price <= this.budget
+            }, this)
+        },
+        // matchedで返ったデータをlimit件返す算出プロパティ
+        limited: function () {
+            return this.matched.slice(0, this.limit)
         }
     }
 })
