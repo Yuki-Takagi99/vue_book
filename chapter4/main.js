@@ -1,6 +1,7 @@
 new Vue({
     el: '#app',
     data: {
+        order: false,
         // フォームの入力と紐づけるデータ
         budget: 300,
         // 表示件数
@@ -21,9 +22,13 @@ new Vue({
                 return el.price <= this.budget
             }, this)
         },
-        // matchedで返ったデータをlimit件返す算出プロパティ
+        // sortedを新しく追加
+        sorted: function () {
+            return _.orderBy(this.matched, 'price', this.order ? 'desc' : 'asc')
+        },
+        // limitedで使用するリストをsortedに変更
         limited: function () {
-            return this.matched.slice(0, this.limit)
+            return this.sorted.slice(0, this.limit)
         }
     }
 })
