@@ -9,16 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
-    <div id="app">
-        <select v-model="current">
-            <option v-for="topic in topics" v-bind:value="topic.value">
-                {{ topic.name }}
-            </option>
-        </select>
-        <div v-for="item in list">{{ item.full_name }}</div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
     <script src="main.js"></script>
+    <div id="app">
+        <button v-on:click="list.push(list.length+1)">追加</button>
+        <ul ref="list">
+            <li v-for="item in list">{{ item }}</li>
+        </ul>
+    </div>
 </body>
 </html>
 
