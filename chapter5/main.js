@@ -1,29 +1,21 @@
+// 子コンポーネント
 Vue.component('comp-child', {
-    template: '<li>{{ name }} HP.{{ hp }}\
-        <button v-on:click="doAttack">攻撃する</button></li>',
-    props: { id: Number, name: String, hp: Number },
+    template: '<button v-on:click="handleClick">イベント発火</button>',
     methods: {
-        doAttack: function () {
-            this.$emit('attack', this.id)
+        // ボタンのクリックイベントのハンドラでchilds-eventを発火する
+        handleClick: function () {
+            this.$emit('childs-event')
         }
     }
 })
 
+// 親コンポーネント
 new Vue({
     el: '#app',
-    data: {
-        list: [
-            { id: 1, name: 'スライム', hp: 100 },
-            { id: 2, name: 'ゴブリン', hp: 200 },
-            { id: 3, name: 'ドラゴン', hp: 500 }
-        ]
-    },
     methods: {
-        handleAttack: function (id) {
-            var item = this.list.find(function (el) {
-                return el.id === id
-            })
-            if (item !== undefined && item.hp > 0) item.hp -= 10
+        // childs-event が発火した！
+        parentsMethod: function() {
+            alert('イベントをキャッチ！')
         }
     }
 })
