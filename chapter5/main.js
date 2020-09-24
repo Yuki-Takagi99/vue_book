@@ -1,23 +1,20 @@
-// コンポーネントA
-Vue.component('my-component-a', {
-    template: '<div class="my-component-a">component A</div>'
+// メッセージ一覧用コンポーネント
+Vue.component('comp-board', {
+    template: '<div>Message Board</div>',
 })
-
-// コンポーネントB
-Vue.component('my-component-b', {
-    template: '<div class="my-component-b">component B</div>'
+// 入力フォーム用コンポーネント
+Vue.component('comp-form', {
+    template: '<div>Form<textarea v-model="message"></textarea></div>',
+    data: function () {
+        return {
+            message: ''
+        }
+    }
 })
 
 new Vue({
     el: '#app',
     data: {
-        componentTypes: ['my-component-a','my-component-b'],
-        current: 0
-    },
-    computed: {
-        component: function () {
-            // currentと一致するindexのコンポーネントを使用
-            return this.componentTypes[this.current]
-        }
+        current: 'comp-board' // 動的に切り替える
     }
 })
