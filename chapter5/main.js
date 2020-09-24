@@ -1,21 +1,23 @@
-// 子コンポーネント
-Vue.component('comp-child', {
-    template: '<button v-on:click="handleClick">イベント発火</button>',
-    methods: {
-        // ボタンのクリックイベントのハンドラでchilds-eventを発火する
-        handleClick: function () {
-            this.$emit('childs-event')
-        }
-    }
+// コンポーネントA
+Vue.component('my-component-a', {
+    template: '<div class="my-component-a">component A</div>'
 })
 
-// 親コンポーネント
+// コンポーネントB
+Vue.component('my-component-b', {
+    template: '<div class="my-component-b">component B</div>'
+})
+
 new Vue({
     el: '#app',
-    methods: {
-        // childs-event が発火した！
-        parentsMethod: function() {
-            alert('イベントをキャッチ！')
+    data: {
+        componentTypes: ['my-component-a','my-component-b'],
+        current: 0
+    },
+    computed: {
+        component: function () {
+            // currentと一致するindexのコンポーネントを使用
+            return this.componentTypes[this.current]
         }
     }
 })
