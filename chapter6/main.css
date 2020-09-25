@@ -2,6 +2,10 @@
     transition: opacity 1s, transform 1s;
 }
 
+.v-leave-active {
+    position: absolute;
+}
+
 .v-enter {
     opacity: 0;
     transform: translateX(-10px);
