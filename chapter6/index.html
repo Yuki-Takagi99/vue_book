@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
     <div id="app">
         <button v-on:click="show=!show">切り替え</button>
-        <transition name="demo">
+        <transition name="demo" appear>
             <div v-if="show">トランジションさせたい要素</div>
         </transition>
     </div>
