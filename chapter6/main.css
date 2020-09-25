@@ -1,17 +1,11 @@
 .v-enter-active, .v-leave-active {
-    transition: opacity 1s, transform 1s;
+    transition: opacity 1s;
 }
 
 .v-leave-active {
     position: absolute;
 }
 
-.v-enter {
+.v-enter, .v-leave-to {
     opacity: 0;
-    transform: translateX(-10px);
-}
-
-.v-leave-to {
-    opacity: 0;
-    transform: translateY(10px);
 }
